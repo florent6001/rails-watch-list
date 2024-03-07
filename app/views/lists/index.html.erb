@@ -1,10 +1,25 @@
-<div class="container">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn-europe1.lanmedia.fr/var/europe1/storage/images/europe1/culture/cinema-pourquoi-le-prix-des-places-a-t-il-augmente-4190446/60304857-1-fre-FR/Cinema-pourquoi-le-prix-des-places-a-t-il-augmente.jpg);">
+  <div class="container text-center">
+    <h1>Save any kind of movies</h1>
+    <p>Classic</p>
+  </div>
+</div>
+
+<div class="container mt-3">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h1>All lists</h1>
-    <%= link_to "Create a list", new_list_path, class: "btn btn-primary" %>
+    <%= link_to "Create a movie list", new_list_path, class: "btn btn-primary" %>
   </div>
-  <% @lists.each do |list| %>
-    <%= link_to list.name, list_path(list) %><br />
-  <% end %>
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col-md-4">
+        <%= link_to list_path(list) do %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+            <%= list.name %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
