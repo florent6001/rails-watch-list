@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="card-body bg-white">
+    <h3>Add yours review</h3>
+    <%= simple_form_for [@list, @review] do |f| %>
+      <%= f.input :comment, placeholder: "Add your review here.." %>
+      <%= f.input :rating %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

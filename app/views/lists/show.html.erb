@@ -4,9 +4,8 @@
   </div>
 </div>
 <div class="container">
-  <div class="row mt-3">
-    <div class="d-flex justify-content-between align-items-center">
-      <h1><%= @list.name %></h1>
+  <div class="row mt-4">
+    <div class="d-flex justify-content-end mb-3">
       <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-primary" %>
     </div>
     <% @list.bookmarks.each do |bookmark| %>
@@ -29,5 +28,30 @@
         </div>
       </div>
     <% end %>
+  </div>
+  <div class="row my-5">
+    <div class="col-md-6">
+      <h2>Reviews</h2>
+      <% if @list.reviews.length > 0 %>
+        <% @list.reviews.each do |review| %>
+          <div class="border-bottom">
+            <% 5.times do |index| %>
+              <% if index >= review.rating %>
+                <i class="fa-solid fa-star"></i>
+              <% else %>
+                <i class="fa-solid fa-star text-info"></i>
+              <% end %>
+            <% end %>
+            <small><%= review.created_at %></small>
+            <p><%= review.comment %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p>There is no review yet!</p>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= render "reviews/form", list: @list, review: @review %>
+    </div>
   </div>
 </div>
