@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to list_path(@list)
     else
-      render template: 'lists/show', locals: { list: @list }
+      render template: 'lists/show', locals: { list: @list }, status: :unprocessable_entity
     end
   end
 
